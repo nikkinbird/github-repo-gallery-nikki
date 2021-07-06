@@ -1,6 +1,7 @@
 // Select overview div - where profile information wil appear
 const overview = document.querySelector(".overview");
 const username = "nikkinbird";
+const repoList = document.querySelector(".repo-list");
 
 // Async function to fetch data from github profile
 const getData = async function () {
@@ -9,7 +10,7 @@ const getData = async function () {
     );
 
     const data = await res.json();
-    console.log(data);
+    //console.log(data);
     displayUserInfo(data);
 };
 
@@ -30,4 +31,20 @@ const displayUserInfo = function(data) {
     <p><strong>Number of public repos:</strong> ${data.public_repos}</p>
   </div>`
   overview.append(userInfo);
+}
+
+// Function to fetch repos
+const fetchRepos = async function() {
+    const res = await fetch (
+        `https://api.github.com/users/${username}/repos`
+    );
+
+    const repos = await res.json();
+    console.log(repos);
+}
+
+
+// Function to display repos
+const displayRepos = function(repos) {
+    let 
 }
