@@ -41,10 +41,19 @@ const fetchRepos = async function() {
 
     const repos = await res.json();
     console.log(repos);
+    displayRepos(repos);
 }
+
+fetchRepos();
 
 
 // Function to display repos
 const displayRepos = function(repos) {
-    let 
+    repos.forEach(function (repo) {
+        let li = document.createElement("li");
+        li.classList.add("repo");
+        li.innerHTML = `<h3>${repo.name}</h3>`;
+        repoList.append(li);
+    });
+    
 }
