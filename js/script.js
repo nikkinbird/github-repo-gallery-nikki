@@ -1,8 +1,12 @@
-// Select overview div - where profile information wil appear
+// Select overview div - where profile information will appear
 const overview = document.querySelector(".overview");
 const username = "nikkinbird";
 const repoList = document.querySelector(".repo-list");
+const repoSection = document.querySelector(".repos");
+const repoData = document.querySelector(".repo-data");
 
+
+// ***************** Fetch User Data ******************
 // Async function to fetch data from github profile
 const getData = async function () {
     const res = await fetch (
@@ -33,6 +37,9 @@ const displayUserInfo = function(data) {
   overview.append(userInfo);
 }
 
+
+// ************** Fetch List of User Repos ********/
+
 // Function to fetch repos
 const fetchRepos = async function() {
     const res = await fetch (
@@ -57,3 +64,13 @@ const displayRepos = function(repos) {
     });
     
 }
+
+// *********** Display Info for Indiv. Repos ******** 
+
+// Event listener for repo-list
+repoList.addEventListener("click", function(e) {
+    if (e.target.matches("h3")) {
+        const repoName = e.target.innerText;
+        console.log(repoName);
+    }
+})
