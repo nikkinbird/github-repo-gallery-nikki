@@ -47,7 +47,7 @@ const fetchRepos = async function() {
     );
 
     const repos = await res.json();
-    console.log(repos);
+    //console.log(repos);
     displayRepos(repos);
 }
 
@@ -86,5 +86,14 @@ const getRepoInfo = async function(repoName) {
         repoInfo.languages_url
     );
     const languageData = await fetchLanguages.json();
-    console.log(languageData);
+    //console.log(languageData);
+
+    const languages = [];
+
+    for(let language in languageData) {
+        languages.push(language);
+    }
+
+    console.log(languages);
+
 }
