@@ -4,6 +4,8 @@ const username = "nikkinbird";
 const repoList = document.querySelector(".repo-list");
 const repoSection = document.querySelector(".repos");
 const repoData = document.querySelector(".repo-data");
+const viewRepos = document.querySelector(".view-repos");
+const filterInput = document.querySelector(".filter-repos");
 
 
 // ***************** Fetch User Data ******************
@@ -115,4 +117,12 @@ const displayRepoInfo = function(repoInfo, languages) {
     repoData.append(repoDiv);
     repoData.classList.remove("hide");
     repoSection.classList.add("hide");
+    viewRepos.classList.remove("hide");
 }  
+
+// Click event for back button
+viewRepos.addEventListener("click", function() {
+    repoData.classList.add("hide");
+    repoSection.classList.remove("hide");
+    viewRepos.classList.add("hide");
+})
