@@ -58,6 +58,7 @@ fetchRepos();
 
 // Function to display repos
 const displayRepos = function(repos) {
+    filterInput.classList.remove("hide");
     repos.forEach(function (repo) {
         let li = document.createElement("li");
         li.classList.add("repo");
@@ -125,4 +126,20 @@ viewRepos.addEventListener("click", function() {
     repoData.classList.add("hide");
     repoSection.classList.remove("hide");
     viewRepos.classList.add("hide");
+});
+
+// Filter input event listener
+filterInput.addEventListener("input", function(e) {
+    const searchInput = e.target.value;
+    //console.log(searchInput);
+    const repos = document.querySelectorAll(".repo");
+    //console.log(repos);
+    const lowerCaseInput = searchInput.toLowerCase();
+    repos.forEach(function (repo) {
+        const lowerCaseRepo = repo.innerText.toLowerCase();
+        if (lowerCaseRepo.includes(lowerCaseInput)) {
+            repo.classList.remove("hide");
+        } else repo.classList.add("hide");
+    })
+
 })
